@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "test-appcheck-coding-house-studio",
-    "public": "public",
+    "public": "build/web",
     "ignore": [
       "firebase.json",
       "**/.*",
