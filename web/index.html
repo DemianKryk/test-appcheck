@@ -80,30 +80,7 @@
 
   </script>
   <!-- reCAPTCHA integration -->
-  <script src="https://www.google.com/recaptcha/api.js"></script>
-  <script>
-    function onSubmit(token) {
-      document.getElementById("demo-form").submit();
-    }
-  </script>
-
-  <button class="g-recaptcha" data-sitekey="6LfKGjcqAAAAAIUz_yV0cTKcPA54o5VFXz64_3di" data-callback='onSubmit'
-    data-action='submit'>
-    Submit
-  </button>
-
-  <!-- Invisible reCAPTCHA v3 -->
   <script src="https://www.google.com/recaptcha/api.js?render=6LfKGjcqAAAAAIUz_yV0cTKcPA54o5VFXz64_3di"></script>
-  <script>
-    function onClick(e) {
-      e.preventDefault();
-      grecaptcha.ready(function () {
-        grecaptcha.execute('6LfKGjcqAAAAAIUz_yV0cTKcPA54o5VFXz64_3di', { action: 'submit' }).then(function (token) {
-          // Add your logic to submit to your backend server here.
-        });
-      });
-    }
-  </script>
 
 </body>
 
