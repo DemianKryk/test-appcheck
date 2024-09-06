@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:test_appcheck/firebase_options.dart';
 
 void main() async {
@@ -88,7 +89,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _incrementCounter() async {
     final text = await getTextTest();
 
-    FirebaseStorage.instance.setMaxUploadRetryTime(Durations.medium1);
+    final imageV = ImagePicker();
+    final file = await imageV.pickImage(source: ImageSource.gallery);
+    FirebaseStorage.instance.ref().putBlob(file);
     setState(() {
       value = text;
       image =
