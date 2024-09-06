@@ -34,7 +34,7 @@ jobs:
       #   run: flutter pub get
       - name: Build the Web static pages # generate deployment files
         run: |
-          flutter build web --release --wasm LUTTER_WEB_USE_SKIA=true
+          flutter build web --release --wasm --dart-define=LUTTER_WEB_USE_SKIA=true
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
