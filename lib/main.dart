@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:test_appcheck/firebase_options.dart';
@@ -10,6 +11,7 @@ void main() async {
   final app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseStorage.instanceFor(app: app);
   await FirebaseAppCheck.instanceFor(app: app).activate(
     webProvider: ReCaptchaV3Provider(
       '6LfKGjcqAAAAAIUz_yV0cTKcPA54o5VFXz64_3di',
@@ -82,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var value = 'You have pushed the button this many times:';
 
   Future<void> _incrementCounter() async {
-    final text = await getTest();
+    final text = await getTextTest();
     setState(() {
       value = text;
       // This call to setState tells the Flutter framework that something has
@@ -94,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  Future<String> getTest() async {
+  Future<String> getTextTest() async {
     final value = await FirebaseFirestore.instance.collection('test').get();
     return value.docs.first['test'] as String;
   }
@@ -136,6 +138,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Image(
+                image: NetworkImage(
+                    'https://firebasestorage.googleapis.com/v0/b/test-appcheck-ef87e.appspot.com/o/story.png?alt=media&token=0e6fd1f2-f015-4c30-aa6f-228a20db9e78')),
             Text(
               value,
             ),
