@@ -82,11 +82,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   var value = 'You have pushed the button this many times:';
+  String image =
+      'https://firebasestorage.googleapis.com/v0/b/test-appcheck-ef87e.appspot.com/o/story.png?alt=media&token=0e6fd1f2-f015-4c30-aa6f-228a20db9e78';
 
   Future<void> _incrementCounter() async {
     final text = await getTextTest();
+
+    FirebaseStorage.instance;
     setState(() {
       value = text;
+      image =
+          'https://firebasestorage.googleapis.com/v0/b/test-appcheck-ef87e.appspot.com/o/story.png?alt=media&token=0e6fd1f2-f015-4c30-aa6f-228a20db9e78';
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
@@ -138,9 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Image(
-                image: NetworkImage(
-                    'https://firebasestorage.googleapis.com/v0/b/test-appcheck-ef87e.appspot.com/o/story.png?alt=media&token=0e6fd1f2-f015-4c30-aa6f-228a20db9e78')),
+            Image(image: NetworkImage(image)),
             Text(
               value,
             ),
