@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _incrementCounter() async {
     final text = await getTextTest();
 
-    FirebaseStorage.instance;
+    FirebaseStorage.instance.setMaxUploadRetryTime(Durations.medium1);
     setState(() {
       value = text;
       image =
@@ -104,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<String> getTextTest() async {
     final value = await FirebaseFirestore.instance.collection('test').get();
+
     return value.docs.first['test'] as String;
   }
 
