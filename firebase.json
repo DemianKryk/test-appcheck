@@ -1,17 +1,1 @@
-{
-  "hosting": {
-    "site": "test-appcheck-coding-house-studio",
-    "public": "build/web",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
-}
+{"hosting":{"site":"test-appcheck-coding-house-studio","public":"build/web","ignore":["firebase.json","**/.*","**/node_modules/**"],"rewrites":[{"source":"**","destination":"/index.html"}]},"database":{"rules":"datebase.rules.json"},"flutter":{"platforms":{"dart":{"lib/firebase_options.dart":{"projectId":"test-appcheck-ef87e","configurations":{"web":"1:566116329549:web:50e0e22a3d43cfe57e5404"}}}}}}

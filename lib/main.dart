@@ -1,6 +1,28 @@
+import 'package:firebase_app_check/firebase_app_check.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:test_appcheck/firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final app = await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseAppCheck.instanceFor(app: app).activate(
+    webProvider: ReCaptchaV3Provider(
+      '6LfKGjcqAAAAAIUz_yV0cTKcPA54o5VFXz64_3di',
+    ),
+  );
+
+  await FirebaseAppCheck.instance.activate(
+    webProvider:
+        ReCaptchaV3Provider('6LfKGjcqAAAAAIUz_yV0cTKcPA54o5VFXz64_3di'),
+    androidProvider:
+        kReleaseMode ? AndroidProvider.playIntegrity : AndroidProvider.debug,
+    appleProvider:
+        kReleaseMode ? AppleProvider.deviceCheck : AppleProvider.debug,
+  );
   runApp(const MyApp());
 }
 
