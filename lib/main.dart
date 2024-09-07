@@ -92,6 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     firebaseStorage = FirebaseStorage.instance;
     firebaseFirestore = FirebaseFirestore.instance;
+    _incrementCounter();
   }
 
   Future<void> _incrementCounter() async {
@@ -127,7 +128,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    _incrementCounter();
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
