@@ -163,7 +163,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           // mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image(image: NetworkImage(image)),
+            SizedBox(
+                height: 100,
+                width: 100,
+                child: Image(image: NetworkImage(image))),
             Text(
               value,
             ),
