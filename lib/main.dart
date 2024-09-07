@@ -85,13 +85,21 @@ class _MyHomePageState extends State<MyHomePage> {
   var value = 'You have pushed the button this many times:';
   String image =
       'https://firebasestorage.googleapis.com/v0/b/test-appcheck-ef87e.appspot.com/o/story.png?alt=media&token=0e6fd1f2-f015-4c30-aa6f-228a20db9e78';
+  late FirebaseStorage firebaseStorage;
+  late FirebaseFirestore firebaseFirestore;
+  @override
+  void initState() {
+    super.initState();
+    firebaseStorage = FirebaseStorage.instance;
+    firebaseFirestore = FirebaseFirestore.instance;
+  }
 
   Future<void> _incrementCounter() async {
     final text = await getTextTest();
     try {
       final imageV = ImagePicker();
       final file = await imageV.pickImage(source: ImageSource.gallery);
-      FirebaseStorage.instance
+      firebaseStorage
           .ref('test/test${file?.name}.png')
           .putBlob(await file?.readAsBytes());
     } catch (e) {
@@ -112,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<String> getTextTest() async {
-    final value = await FirebaseFirestore.instance.collection('test').get();
+    final value = await firebaseFirestore.collection('test').get();
 
     return value.docs.first['test'] as String;
   }
