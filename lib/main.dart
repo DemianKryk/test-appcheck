@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 import 'package:test_appcheck/firebase_options.dart';
 
 void main() async {
@@ -12,7 +12,7 @@ void main() async {
   final app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebaseStorage.instanceFor(app: app);
+  // FirebaseStorage.instanceFor(app: app);
   await FirebaseAppCheck.instanceFor(app: app).activate(
     webProvider: ReCaptchaV3Provider(
       '6LfKGjcqAAAAAIUz_yV0cTKcPA54o5VFXz64_3di',
@@ -85,28 +85,28 @@ class _MyHomePageState extends State<MyHomePage> {
   var value = 'You have pushed the button this many times:';
   String image =
       'https://firebasestorage.googleapis.com/v0/b/test-appcheck-ef87e.appspot.com/o/story.png?alt=media&token=0e6fd1f2-f015-4c30-aa6f-228a20db9e78';
-  late FirebaseStorage firebaseStorage;
+  // late FirebaseStorage firebaseStorage;
   late FirebaseFirestore firebaseFirestore;
   @override
   void initState() {
     super.initState();
-    firebaseStorage = FirebaseStorage.instance;
+    // firebaseStorage = FirebaseStorage.instance;
     firebaseFirestore = FirebaseFirestore.instance;
     _incrementCounter();
   }
 
   Future<void> _incrementCounter() async {
     final text = await getTextTest();
-    try {
-      final imageV = ImagePicker();
-      final file = await imageV.pickImage(source: ImageSource.gallery);
-      firebaseStorage
-          .ref('test/test${file?.name}.png')
-          .putBlob(await file?.readAsBytes());
-    } catch (e) {
-      final value = e;
-      debugPrint('ERROR: $value');
-    }
+    // try {
+    //   final imageV = ImagePicker();
+    //   final file = await imageV.pickImage(source: ImageSource.gallery);
+    //   firebaseStorage
+    //       .ref('test/test${file?.name}.png')
+    //       .putBlob(await file?.readAsBytes());
+    // } catch (e) {
+    //   final value = e;
+    //   debugPrint('ERROR: $value');
+    // }
     setState(() {
       value = text;
       image =
