@@ -19,14 +19,14 @@ void main() async {
     ),
   );
 
-  await FirebaseAppCheck.instance.activate(
-    webProvider:
-        ReCaptchaV3Provider('6LfKGjcqAAAAAIUz_yV0cTKcPA54o5VFXz64_3di'),
-    androidProvider:
-        kReleaseMode ? AndroidProvider.playIntegrity : AndroidProvider.debug,
-    appleProvider:
-        kReleaseMode ? AppleProvider.deviceCheck : AppleProvider.debug,
-  );
+  // await FirebaseAppCheck.instance.activate(
+  //   webProvider:
+  //       ReCaptchaV3Provider('6LfKGjcqAAAAAIUz_yV0cTKcPA54o5VFXz64_3di'),
+  //   androidProvider:
+  //       kReleaseMode ? AndroidProvider.playIntegrity : AndroidProvider.debug,
+  //   appleProvider:
+  //       kReleaseMode ? AppleProvider.deviceCheck : AppleProvider.debug,
+  // );
   runApp(const MyApp());
 }
 
