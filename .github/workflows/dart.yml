@@ -15,6 +15,5 @@ jobs:
   build:
     environment: 'prod'
     runs-on: ubuntu-latest
-
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ secrets.test }} event."
+      - run: echo "${{ secrets.test }}"
